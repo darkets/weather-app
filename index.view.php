@@ -79,7 +79,7 @@
         <div class="search">
             <h2 class="text location">Enter Location</h2>
             <div class="formContainer">
-                <form method="GET" action="routes.php">
+                <form method="GET" action="main.php">
                     <label>
                         <input name="city" type="text" minlength="2" required placeholder="Riga"/>
                     </label>
@@ -88,9 +88,11 @@
             </div>
         </div>
 
-        <div class="results">
-            <?php
-                echo "<div class='information text'>
+        <?php
+            if (isset($_GET['name'])) {
+            echo "
+            <div class='results'>
+                <div class='information text'>
                     <h1>{$_GET['name']}</h1>
                     <p>
                         Weather condition: {$_GET['weather'][0]['description']}
@@ -107,12 +109,11 @@
                     <p>
                         Wind speed: {$_GET['wind']['speed']} m/s
                     </p>
-
-                    
-    
-                </div>"
-            ?>
-        </div>
+                </div>
+            </div>
+            ";
+            }
+        ?>
     </div>
 </body>
 
